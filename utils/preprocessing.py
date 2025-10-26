@@ -80,7 +80,9 @@ def engineer_employment_history_features(df: pd.DataFrame) -> pd.DataFrame:
     # 片段数量（可能不存在，缺则填0）
     for col in ["n_nmpsp_dv","n_nnmpsp_dv","n_nunmpsp_dv"]:
         if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors="coerce")  # 强制转为数值
             df[col] = df[col].fillna(0)
+
 
 
     # 结束原因（裁员/解雇/合同期满…/COVID）
