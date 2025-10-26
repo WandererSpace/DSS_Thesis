@@ -38,15 +38,13 @@ def read_indresp_selected(cfg=None, root: Path | None=None) -> pd.DataFrame:
     cfg, root = load_config(root)
     dta_path = abspath(root, cfg["ukhls"]["indresp_dta"])
 
-    # 先读取列名
-    _, meta = pyreadstat.read_dta(dta_path, row_limit=1, apply_value_formats=False)
-    available = set(meta.column_names)
+    # 加载候选字段清单
+    manifest = abspath(root, cfg["ukhls"]["candidate_vars_csv"])
+    df_manifest = pd.read_csv(manifest)
+    keep_cols = df_manifest["varname"].astype(str).unique().tolist()
 
-    keep_cols = load_candidate_vars(cfg, root)
-    usecols = _resolve_keep_cols(keep_cols, available)
-
-    # 再读取数据（只读需要的列）
-    df, _ = pyreadstat.read_dta(dta_path, usecols=usecols, apply_value_formats=False, formats_as_category=False)
+    # 使用 pandas 读取
+    df = pd.read_stata(dta_path, columns=keep_cols)
     return df
 
 def normalize_missing(df: pd.DataFrame, neg_codes: list[int]) -> pd.DataFrame:
