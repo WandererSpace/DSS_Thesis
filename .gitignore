@@ -1,0 +1,18 @@
+# Ignore raw and processed data
+data/raw/
+data/processed/
+data/external/
+
+# Ignore model weights and outputs
+*.pkl
+*.h5
+*.pt
+
+# Ignore temporary and system files
+__pycache__/
+*.pyc
+.DS_Store
+.ipynb_checkpoints/
+
+# Allow small sample data
+!data/sample_data.csv
