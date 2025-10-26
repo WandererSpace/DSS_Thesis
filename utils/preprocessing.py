@@ -44,7 +44,15 @@ def read_indresp_selected(cfg=None, root: Path | None=None) -> pd.DataFrame:
     keep_cols = df_manifest["varname"].astype(str).unique().tolist()
 
     # 使用 pandas 读取
-    df = pd.read_stata(dta_path, columns=keep_cols)
+    # 获取 .dta 文件中实际包含的字段
+    df_preview = pd.read_stata(dta_path, nrows=1)
+    available_cols = set(df_preview.columns)
+
+    # 只保留 .dta 中确实存在的字段
+    usecols = [c for c in keep_cols if c in available_cols]
+
+    df = pd.read_stata(dta_path, columns=usecols)
+
     return df
 
 def normalize_missing(df: pd.DataFrame, neg_codes: list[int]) -> pd.DataFrame:
