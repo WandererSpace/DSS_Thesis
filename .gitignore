@@ -3,16 +3,22 @@ data/raw/
 data/processed/
 data/external/
 
+# Allow small sample data
+!data/sample_data.csv
+
 # Ignore model weights and outputs
 *.pkl
 *.h5
 *.pt
 
-# Ignore temporary and system files
+# Ignore Python cache files
 __pycache__/
 *.pyc
-.DS_Store
+
+# Ignore Jupyter checkpoints
 .ipynb_checkpoints/
 
-# Allow small sample data
-!data/sample_data.csv
+# Ignore system and editor files
+.DS_Store
+.vscode/
+.env
