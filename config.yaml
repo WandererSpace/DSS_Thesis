@@ -1,0 +1,47 @@
+project:
+  name: DSS_Thesis
+  seed: 42
+
+paths:
+  data_raw: data/raw
+  data_processed: data/processed
+  data_external: data/external
+  manifests: data/manifests
+  notebooks: notebooks
+  models: models
+  scripts: scripts
+  utils: utils
+  reports: report
+  figures: report/figures
+  metrics: report/metrics
+  predictions: report/predictions
+  logs: report/logs
+
+ukhls:
+  indresp_dta: UKDA-6614-stata/stata/ukhls/n_indresp.dta
+  dictionary_txt: UKDA-6614-stata/stata/ukhls/n_indresp_ukda_data_dictionary.txt
+  candidate_vars_csv: data/manifests/ukhls_n_indresp_candidate_vars.csv
+
+processing:
+  negative_missing_codes: [-9, -8, -7, -2, -1]
+  sample_flag_col: n_scflag_dv
+  household_id_col: n_hidp
+  person_id_col: pidp
+  date_cols: [n_intdatm_dv, n_intdaty_dv]
+  outputs:
+    indresp_selected: data/processed/ukhls_indresp_selected.parquet
+    features: data/processed/ukhls_features.parquet
+    dataset_for_model: data/processed/ukhls_baseline_dataset.parquet
+
+modeling:
+  target_classification: n_scghq2_dv
+  caseness_threshold: 4
+  target_regression: n_sf12mcs_dv
+  weight_col: n_indscg2_xw
+  group_col: n_hidp
+  model_name: logreg      # 可选：logreg | rf | hgbt
+  n_splits_cv: 5
+  outputs:
+    model_file: models/baseline_model.joblib
+    metrics_file: report/metrics/baseline_metrics.json
+    predictions_file: report/predictions/baseline_predictions.parquet
