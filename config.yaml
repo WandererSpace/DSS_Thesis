@@ -18,7 +18,7 @@ paths:
   logs: report/logs
 
 ukhls:
-  indresp_dta: UKDA-6614-stata/stata/ukhls/n_indresp.dta
+  indresp_dta: data/raw/UKDA-6614-stata/stata/ukhls/n_indresp.dta
   dictionary_txt: UKDA-6614-stata/stata/ukhls/n_indresp_ukda_data_dictionary.txt
   candidate_vars_csv: data/manifests/ukhls_n_indresp_candidate_vars.csv
 
