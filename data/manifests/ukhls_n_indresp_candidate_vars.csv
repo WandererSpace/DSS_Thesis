@@ -1,0 +1,119 @@
+theme,varname,label_in_dictionary
+demographics,n_age_dv,"Age, derived from dob_dv and intdat_dv"
+demographics,n_agegr5_dv,Age group (age_dv): 5 year intervals
+demographics,n_englang,English is first language
+demographics,n_ethn_dv,Ethnic group (derived from multiple sources)
+demographics,n_gor_dv,Government Office Region
+demographics,n_racel_dv,"Ethnic group incorp. all waves, codings, modes and bhps"
+demographics,n_sex_dv,"Sex, derived"
+demographics,n_urban_dv,"Urban or rural area, derived"
+education,n_hiqual_dv,Highest qualification ever reported
+education,n_isced11_dv,"Highest education qualification, short ISCED 2011"
+education,n_nhiqual_dv,"Highest new qualification, UKHLS & BHPS samples"
+education,n_nisced11_dv,"Newest Highest education qualification, short ISCED 2011"
+education,n_nqfhigh_dv,Newly reported highest educational qualification
+education,n_qfhigh_dv,Highest educational qualification
+employment_history_spells,n_currstat1,empl spell no. 1: Current non-employment status
+employment_history_spells,n_currstat2,empl spell no. 2: Current non-employment status
+employment_history_spells,n_currstat3,empl spell no. 3: Current non-employment status
+employment_history_spells,n_currstat4,empl spell no. 4: Current non-employment status
+employment_history_spells,n_currstat5,empl spell no. 5: Current non-employment status
+employment_history_spells,n_currstat6,empl spell no. 6: Current non-employment status
+employment_history_spells,n_nextelse1,empl spell no. 1: Next non-employment status
+employment_history_spells,n_nextelse2,empl spell no. 2: Next non-employment status
+employment_history_spells,n_nextelse3,empl spell no. 3: Next non-employment status
+employment_history_spells,n_nextelse4,empl spell no. 4: Next non-employment status
+employment_history_spells,n_nextelse5,empl spell no. 5: Next non-employment status
+employment_history_spells,n_nextelse6,empl spell no. 6: Next non-employment status
+employment_history_spells,n_nextstat1,empl spell no. 1: Next employment status
+employment_history_spells,n_nextstat2,empl spell no. 2: Next employment status
+employment_history_spells,n_nextstat3,empl spell no. 3: Next employment status
+employment_history_spells,n_nextstat4,empl spell no. 4: Next employment status
+employment_history_spells,n_nextstat5,empl spell no. 5: Next employment status
+employment_history_spells,n_nextstat6,empl spell no. 6: Next employment status
+employment_history_spells,n_nmpsp_dv,No. employment spells since last interview
+employment_history_spells,n_nnmpsp_dv,No. non-employment spells since last interview
+employment_history_spells,n_nunmpsp_dv,No. unemployment spells since last interview
+employment_history_spells,n_reasendoth1_code,empl spell no. 1: Job finished for other reasons
+employment_history_spells,n_reasendoth2_code,empl spell no. 2: Job finished for other reasons
+employment_history_spells,n_reasendoth3_code,empl spell no. 3: Job finished for other reasons
+employment_history_spells,n_reasendoth4_code,empl spell no. 4: Job finished for other reasons
+employment_history_spells,n_reasendoth5_code,empl spell no. 5: Job finished for other reasons
+employment_history_spells,n_reasendoth6_code,empl spell no. 6: Job finished for other reasons
+employment_history_spells,n_statendy41,empl spell no. 1: Employment status end: year
+employment_history_spells,n_statendy42,empl spell no. 2: Employment status end: year
+employment_history_spells,n_statendy43,empl spell no. 3: Employment status end: year
+employment_history_spells,n_statendy44,empl spell no. 4: Employment status end: year
+employment_history_spells,n_statendy45,empl spell no. 5: Employment status end: year
+employment_history_spells,n_statendy46,empl spell no. 6: Employment status end: year
+employment_status_job_quality,n_jbbens,
+employment_status_job_quality,n_jbft_dv,Full or part-time employee
+employment_status_job_quality,n_jbiindb_dv,"Current job: Industrial classification (CNEF), two digits"
+employment_status_job_quality,n_jbisco08_cc,
+employment_status_job_quality,n_jbnssec3_10_dv,Current job: Three Class NS-SEC: Job 10
+employment_status_job_quality,n_jbnssec3_1_dv,Current job: Three Class NS-SEC: Job 1
+employment_status_job_quality,n_jbnssec3_2_dv,Current job: Three Class NS-SEC: Job 2
+employment_status_job_quality,n_jbnssec3_3_dv,Current job: Three Class NS-SEC: Job 3
+employment_status_job_quality,n_jbnssec3_4_dv,Current job: Three Class NS-SEC: Job 4
+employment_status_job_quality,n_jbnssec3_5_dv,Current job: Three Class NS-SEC: Job 5
+employment_status_job_quality,n_jbnssec3_6_dv,Current job: Three Class NS-SEC: Job 6
+employment_status_job_quality,n_jbnssec3_7_dv,Current job: Three Class NS-SEC: Job 7
+employment_status_job_quality,n_jbnssec3_8_dv,Current job: Three Class NS-SEC: Job 8
+employment_status_job_quality,n_jbnssec3_9_dv,Current job: Three Class NS-SEC: Job 9
+employment_status_job_quality,n_jbnssec8_dv,Current job: Eight Class NS-SEC
+employment_status_job_quality,n_jbot,No. of overtime hours in normal week
+employment_status_job_quality,n_jbsec,Job security in next 12 months
+employment_status_job_quality,n_jbsic07_10_cc,Current job: SIC 2007 (condensed 2-digit version): Job 10
+employment_status_job_quality,n_jbsic07_1_cc,Current job: SIC 2007 (condensed 2-digit version): Job 1
+employment_status_job_quality,n_jbsic07_2_cc,Current job: SIC 2007 (condensed 2-digit version): Job 2
+employment_status_job_quality,n_jbsic07_3_cc,Current job: SIC 2007 (condensed 2-digit version): Job 3
+employment_status_job_quality,n_jbsic07_4_cc,Current job: SIC 2007 (condensed 2-digit version): Job 4
+employment_status_job_quality,n_jbsic07_5_cc,Current job: SIC 2007 (condensed 2-digit version): Job 5
+employment_status_job_quality,n_jbsic07_6_cc,Current job: SIC 2007 (condensed 2-digit version): Job 6
+employment_status_job_quality,n_jbsic07_7_cc,Current job: SIC 2007 (condensed 2-digit version): Job 7
+employment_status_job_quality,n_jbsic07_8_cc,Current job: SIC 2007 (condensed 2-digit version): Job 8
+employment_status_job_quality,n_jbsic07_9_cc,Current job: SIC 2007 (condensed 2-digit version): Job 9
+employment_status_job_quality,n_jbstat,Current economic activity
+employment_status_job_quality,n_jbterm,
+employment_status_job_quality,n_jbwah,Working at home
+health_behaviours_conditions,n_ncigs,Usual no. of cigarettes smoked per day
+health_behaviours_conditions,n_smoker,Smoker
+ids_meta,n_hidp,Household identifier (public release)
+ids_meta,n_intdatd_dv,"Interview date: Day, derived"
+ids_meta,n_intdatm_dv,"Interview date: Month, derived"
+ids_meta,n_intdaty_dv,"Interview date: Year, derived"
+ids_meta,n_pno,Person number
+ids_meta,n_scflag_dv,flag for self-completion record
+ids_meta,pidp,Cross-wave person identifier (public release)
+income_finance,n_fimninvnet_dv,amount income component 5: investment income
+income_finance,n_fimnmisc_dv,amount income component 2: miscellaneous income
+income_finance,n_fimnnet_dv,total net personal income - no deductions
+income_finance,n_fimnpen_dv,amount income component 6: pension income
+income_finance,n_fimnsben_dv,amount income component 7: social benefit income
+income_finance,n_paygu_if,imputation flag var - paygu_dv
+income_finance,n_paynu_if,imputation flag var - paynu_dv
+income_finance,n_payu_dv,usual pay per month if different from last
+income_finance,n_seearngrs_if,imputation flag var - seearngrs_dv
+social_isolation_loneliness_satisfaction,n_scisolate,How often feels isolated from others
+social_isolation_loneliness_satisfaction,n_sclackcom,How often feels lack of companionship
+social_isolation_loneliness_satisfaction,n_scleftout,How often feels left out
+social_isolation_loneliness_satisfaction,n_sclfsat3,Satisfaction with: house/flat
+social_isolation_loneliness_satisfaction,n_sclfsat7,Satisfaction with amount of leisure time
+social_isolation_loneliness_satisfaction,n_sclfsato,Satisfaction with life overall
+social_isolation_loneliness_satisfaction,n_sclonely,How often feels lonely
+targets,n_jwbs1_dv,Job-related Wellbeing Scale: Anxiety subscale
+targets,n_jwbs2_dv,Job-related Wellbeing Scale: Depression subscale
+targets,n_scghq1_dv,Subjective wellbeing (GHQ): Likert
+targets,n_scghq2_dv,Subjective wellbeing (GHQ): Caseness
+targets,n_sf12mcs_dv,SF-12 Mental Component Summary (MCS)
+weights_design,n_inding2_xw,Cross-sectional adult main interview weight
+weights_design,n_indinub_lw,combined UKHLS+ BHPS longitudinal adult main interview weight
+weights_design,n_indinui_lw,combined UKHLS+BHPS+IEMB longitudinal adult main interview weight
+weights_design,n_indpxg2_xw,Cross-sectional adult main or proxy interview weight
+weights_design,n_indpxub_lw,combined BHPS+ UKHLS longitudinal adult main or proxy interview weight
+weights_design,n_indpxui_lw,combined BHPS+ UKHLS+IEMB longitudinal adult main or proxy interview weight
+weights_design,n_indpxus_lw,longitudinal adult main or proxy interview weight
+weights_design,n_indscg2_xw,Cross-sectional adult self-completion interview weight
+weights_design,n_indscub_lw,combined BHPS+UKHLS longitudinal adult self-completion interview weight
+weights_design,n_indscui_lw,combined UKHLS+BHPS+IEMB longitudinal adult self-completion interview weight
+weights_design,n_indscus_lw,longitudinal adult self-completion interview weight
