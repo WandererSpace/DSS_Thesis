@@ -141,6 +141,10 @@ def run_basic_processing_and_save(cfg=None, root: Path | None=None):
     df = read_indresp_selected(cfg, root)
     df = normalize_missing(df, proc["negative_missing_codes"])
     df = filter_self_completion(df, proc["sample_flag_col"])
+    # ⬇️ 添加调试行
+    print("After filtering self-completion:", df.shape)
+    print("target_cls existence:", "target_cls" in df.columns)
+
     df = engineer_employment_history_features(df)
     df = build_targets(df, cfg)
     # 🚫 消除 category 类型（否则 to_parquet/pyarrow 会出错）
@@ -152,4 +156,7 @@ def run_basic_processing_and_save(cfg=None, root: Path | None=None):
     # 可按需在此处做进一步特征处理后另存为 out_feat/out_ds
     df.to_parquet(out_feat, index=False)
     df.to_parquet(out_ds, index=False)
+    print("Final processed dataset shape:", df.shape)
+    print("target_cls value counts:", df["target_cls"].value_counts(dropna=False) if "target_cls" in df.columns else "No target_cls")
     return df, out_ds
+    
