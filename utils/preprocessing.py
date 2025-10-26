@@ -146,7 +146,6 @@ def run_basic_processing_and_save(cfg=None, root: Path | None=None):
 
     df = read_indresp_selected(cfg, root)
     df = normalize_missing(df, proc["negative_missing_codes"])
-    df = filter_self_completion(df, proc["sample_flag_col"])
     # ⬇️ 添加调试行
     print("After filtering self-completion:", df.shape)
     print("target_cls existence:", "target_cls" in df.columns)
