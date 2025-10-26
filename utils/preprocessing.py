@@ -35,24 +35,31 @@ def load_candidate_vars(cfg, root: Path) -> list[str]:
     return cols
 
 def read_indresp_selected(cfg=None, root: Path | None=None) -> pd.DataFrame:
+    """Robustly read the subset of variables that actually exist in the .dta file."""
     cfg, root = load_config(root)
     dta_path = abspath(root, cfg["ukhls"]["indresp_dta"])
 
-    # 加载候选字段清单
+    # 1. 读取候选变量清单
     manifest = abspath(root, cfg["ukhls"]["candidate_vars_csv"])
     df_manifest = pd.read_csv(manifest)
     keep_cols = df_manifest["varname"].astype(str).unique().tolist()
 
-    # 使用 pandas 读取
-    # 获取 .dta 文件中实际包含的字段
-    df_preview = pd.read_stata(dta_path, nrows=1)
-    available_cols = set(df_preview.columns)
+    # 2. 安全获取 .dta 中的真实列名（兼容旧 pandas）
+    try:
+        reader = pd.read_stata(dta_path, iterator=True)
+        preview = reader.read(1)
+        available_cols = list(preview.columns)
+        reader.close()
+    except Exception:
+        # 如果 iterator 失败，就直接全读一遍（最慢但最安全）
+        preview = pd.read_stata(dta_path)
+        available_cols = list(preview.columns)
 
-    # 只保留 .dta 中确实存在的字段
+    # 3. 只保留确实存在的列
     usecols = [c for c in keep_cols if c in available_cols]
 
+    # 4. 真正读取需要的字段
     df = pd.read_stata(dta_path, columns=usecols)
-
     return df
 
 def normalize_missing(df: pd.DataFrame, neg_codes: list[int]) -> pd.DataFrame:
