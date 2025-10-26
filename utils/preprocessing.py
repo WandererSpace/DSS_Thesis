@@ -117,16 +117,22 @@ def engineer_employment_history_features(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 def build_targets(df: pd.DataFrame, cfg) -> pd.DataFrame:
-    # GHQ caseness（>=阈值记为1）
-    ghq2 = cfg["modeling"]["target_classification"]
-    thr  = cfg["modeling"]["caseness_threshold"]
-    if ghq2 in df.columns:
-        df["target_cls"] = (df[ghq2] >= thr).astype("Int64")
+    """
+    构建分类目标变量 target_cls，基于 GHQ caseness 指标：n_scghq2_dv。
+    使用阈值（默认 4+）划分心理困扰状态。
 
-    # SF-12 MCS 作为回归目标
-    mcs = cfg["modeling"]["target_regression"]
-    if mcs in df.columns:
-        df["target_reg"] = df[mcs].astype("float")
+    注意：不再使用 n_scflag_dv 进行样本筛选，直接以目标字段值是否有效为标准。
+    """
+
+    target_col = cfg["processing"]["classification_target"]
+    threshold = cfg["processing"]["classification_threshold"]
+
+    # 保留有效 GHQ 值（0~12），去除非法编码 -9/-8 等
+    df = df[df[target_col].between(0, 12)]
+
+    # 创建二分类目标列
+    df["target_cls"] = (df[target_col] >= threshold).astype("Int64")
+
     return df
 
 def run_basic_processing_and_save(cfg=None, root: Path | None=None):

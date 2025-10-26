@@ -28,10 +28,13 @@ processing:
   household_id_col: n_hidp
   person_id_col: pidp
   date_cols: [n_intdatm_dv, n_intdaty_dv]
+  classification_target: n_scghq2_dv
+  classification_threshold: 4
   outputs:
     indresp_selected: data/processed/ukhls_indresp_selected.parquet
     features: data/processed/ukhls_features.parquet
     dataset_for_model: data/processed/ukhls_baseline_dataset.parquet
+
 
 modeling:
   target_classification: n_scghq2_dv
