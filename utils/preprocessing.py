@@ -143,6 +143,9 @@ def run_basic_processing_and_save(cfg=None, root: Path | None=None):
     df = filter_self_completion(df, proc["sample_flag_col"])
     df = engineer_employment_history_features(df)
     df = build_targets(df, cfg)
+    # 🚫 消除 category 类型（否则 to_parquet/pyarrow 会出错）
+    for col in df.select_dtypes(include="category").columns:
+        df[col] = df[col].astype(str)
 
     # 保存
     df.to_parquet(out_sel, index=False)
