@@ -82,6 +82,7 @@ def engineer_employment_history_features(df: pd.DataFrame) -> pd.DataFrame:
         if col in df.columns:
             df[col] = df[col].fillna(0)
 
+
     # 结束原因（裁员/解雇/合同期满…/COVID）
     end_cols  = [c for c in df.columns if re.match(r"n_reasendoth\d+_code", c)]
     next_cols = [c for c in df.columns if re.match(r"n_nextelse\d+", c)]
