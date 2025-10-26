@@ -131,7 +131,7 @@ def build_targets(df: pd.DataFrame, cfg) -> pd.DataFrame:
     df = df[df[target_col].between(0, 12)]
 
     # 创建二分类目标列
-    df["target_cls"] = (df[target_col] >= threshold).astype("Int64")
+    df.loc[:, "target_cls"] = (df[target_col] >= threshold).astype("Int64")
 
     return df
 
