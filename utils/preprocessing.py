@@ -77,13 +77,14 @@ def filter_self_completion(df: pd.DataFrame, flag_col: str) -> pd.DataFrame:
     return df
 
 def engineer_employment_history_features(df: pd.DataFrame) -> pd.DataFrame:
-    # 片段数量（可能不存在，缺则填0）
-    for col in ["n_nmpsp_dv","n_nnmpsp_dv","n_nunmpsp_dv"]:
+    import numpy as np
+    import re
+
+    # 强制数值化：就业片段计数列
+    for col in ["n_nmpsp_dv", "n_nnmpsp_dv", "n_nunmpsp_dv"]:
         if col in df.columns:
-            df[col] = pd.to_numeric(df[col], errors="coerce")  # 强制转为数值
-            df[col] = df[col].fillna(0)
-
-
+            df[col] = df[col].astype(str).replace("nan", np.nan)
+            df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0).astype(float)
 
     # 结束原因（裁员/解雇/合同期满…/COVID）
     end_cols  = [c for c in df.columns if re.match(r"n_reasendoth\d+_code", c)]
@@ -109,7 +110,7 @@ def engineer_employment_history_features(df: pd.DataFrame) -> pd.DataFrame:
         df["end_covid_cnt"] = 0
 
     if next_cols:
-        df["next_unemp_cnt"] = df.apply(lambda r: _count_codes(r, next_cols, {1}), axis=1)  # 1=Unemployed/seeking work
+        df["next_unemp_cnt"] = df.apply(lambda r: _count_codes(r, next_cols, {1}), axis=1)
     else:
         df["next_unemp_cnt"] = 0
 
