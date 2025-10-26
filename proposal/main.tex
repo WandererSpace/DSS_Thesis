@@ -1,0 +1,98 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[nochapters]{classicthesis}                              % template
+\usepackage[margin=42mm]{geometry}                                  % margins
+\usepackage[utf8]{inputenc}                                         % allow utf-8 input
+\usepackage[T1]{fontenc}                                            % use 8-bit T1 fonts
+\usepackage{graphicx}                                               % images
+\usepackage{url}                                                    % URL typesetting
+\usepackage{booktabs}                                               % good-looking tables
+\usepackage{multirow}                                               % for tables
+\usepackage{amsfonts}                                               % blackboard math symbols
+\usepackage{amsmath}                                                % math ops
+\usepackage{nicefrac}                                               % compact 1/2, etc.
+\usepackage{microtype}                                              % microtypography
+
+\definecolor{darkblue}{rgb}{0, 0, 0.5}                              % define link color
+\hypersetup{colorlinks=true,citecolor=darkblue,                     % set link color
+            linkcolor=darkblue, urlcolor=darkblue}
+
+% Your packages here
+% \usepackage{...}                                                  % some info, maybe
+
+% !!! PLEASE CHANGE THESE VARIABLES TO MATCH YOUR INFORMATION !!!
+
+\def\thesistitle{The Main Title of the Thesis Proposal}                      % title
+\def\subtitle{}             % subtitle
+    % ^if there is no subtitle, replace by \def\subtitle{}  
+\def\yourname{Your Name}                                                                       % ^first and last name
+\def\yourprogramme{Data Science \& Society}                         % OR (remove this)
+% \def\yourprogramme{Cognitive Science \& Artificial Intelligence}    % uncomment this
+\def\yourstudentnumber{000000}                                      % ANR (or u-number)
+\def\duedate{March 17th, 2023}
+\def\supervisor{dr. Your Main Supervisor}
+
+\def\wordcount{X}
+
+% METADATA
+
+\hypersetup{pdfauthor   = \yourname,
+            pdftitle    = \thesistitle\ \subtitle,
+            pdfsubject  = \yourprogramme\ Master Thesis
+}
+
+% APA-7 style
+\usepackage[style=apa, natbib=true, backend=biber]{biblatex}
+
+% this bit is required in any case 
+%(change name if you use a different bib file)
+\addbibresource{references.bib}
+
+% !!! ------------------------------------------------------ !!!
+
+\begin{document}
+\input{frontmatter.tex}  % don't remove this :)
+
+% --- start writing below:
+
+\section{Project Definition, Motivation \& Relevance} \label{sec:introduction}
+Provide a clear description of the context of your thesis project, including a problem statement. Do not include the findings of the research. Briefly explain why this problem is worth addressing and where a lack of knowledge may be present that needs to be investigated, both from a societal and scientific point of view. \textit{Make sure that the problem you address has not been solved already.}   
+
+\section{Literature Review}
+Provide a summary of what is known in the scientific literature about this problem. This summary should be based on at least five relevant \textbf{recent} sources and, if appropriate, some more classical sources. These recent sources need to satisfy the following requirements: 
+\begin{enumerate}
+    \item Recency – published in the last five years
+    \item Quality – published in scientific peer-reviewed journals or conference proceedings
+    \item Usefulness – they should help you frame the theoretical background of your project
+\end{enumerate}
+Note that a complete literature review is not expected at this project stage, but the final report will expect it. Pay good attention to use  \textbf{paraphrasing} instead of copying text; because of the limited space in this proposal, you should practice with summarising literature in your own words to avoid (accidental) \textbf{plagiarism}
+
+To cite papers, copy paste BibTeX code\footnote{Using e.g. the quote icon in GScholar, then BibTeX at the bottom.} and put it in \texttt{references.bib}. After, you can cite some work \citep{mackay2003information} -- using \texttt{\textbackslash citep}. You can refer to the author of e.g. \citet{minsky1961steps} directly like using \texttt{\textbackslash citet} If you just want to print the author names at the start of a sentence separate from the citation, you might want use \texttt{\textbackslash citeauthor} when citing, like: In their seminal contribution,  \citeauthor{ananny2018seeing} provide evidence for ... \citep{ananny2018seeing}. If you want to add pages you can use brackets in \texttt{\textbackslash citep[][p. 5]\{mackay2003information\}}, which looks like: \citep[][p. 5]{mackay2003information}. The first brackets can be used for \emph{see}, and \emph{e.g.} etc. If you want to cite multiple authors, simply comma-separate them (\texttt{\textbackslash citep\{\-minsky\-1961\-steps,\-mackay\-2003\-information\}}) and it will aggregate them automatically \citep{minsky1961steps,mackay2003information}.
+
+\section{Research Strategy \& Research Questions}
+Outline the concrete research strategy for the project, formulated as Research Questions that the thesis project will answer. What will be contributed to the literature by answering these research questions? Avoid very general statements ("is it feasible to ...") but try to formulate concrete research questions, split into sub-questions where appropriate. The RQs should follow logically from the problem statement combined with state-of-the-art to inform your research strategy.
+
+Your strategy should address these elements that also appear in the evaluation rubric for the final thesis product (if already known at this point):
+\begin{itemize}
+    \item Does the dataset/your target variable contain large class imbalances/non-normal distributions?
+    \item Are there separable feature sets in the dataset(s)? Will additional features be generated? Which methods will be used for feature selection/ranking or model interpretability?
+    \item On which aspect will model comparison be implemented? Comparison of several tuned algorithms, comparison of different input datasets? What is the proposed method for validation and test set separation? Will you use resampling or other statistical methods to assess model comparisons?
+    \item How will error patterns be analyzed? Are there interesting subgroups in the data for which bias/subgroup error analysis could be implemented?
+\end{itemize}
+
+(Sub-)RQs should specify which manipulations to the data, features, and/or algorithms are contrasted and should be specific rather than general statements (e.g., name the algorithms you are considering, instead of posing general questions like ``which Machine Learning model...''). You can write a short motivation leading up to a subRQ, for example: "previous research has shown that a larger proportion of man failed in X compared to women. Therefore, model performance and error analysis will also be split according to gender".
+
+\section{Methodology and Evaluation}
+\subsection{Dataset Description}
+Describe the dataset(s) you will use in your project (size, format, accessibility). Provide a rationale for why you are choosing these data. \textbf{If, at the point of proposal submission, you do not yet have your complete dataset (e.g., in a project with an external partner), there is a very real risk the project might not be completed in time. Prepare a plan B with your supervisor.} 
+
+\subsection{Algorithms and Software}
+Describe what algorithms and software you plan to use in your project. Include a motivation for why you have chosen these implementations, with references to the literature.
+
+\subsection{Evaluation Method}
+Define how you will evaluate your results. For prediction problems (classification or regression), you will likely use standard techniques – they do not need to be explained in detail. How will you be able to judge the performance of competing models? Against what baseline methods(s) will you compare your algorithm(s)? How do you plan to obtain ground-truth labeled data to measure accuracy, precision, recall, or some other metric? If you plan to use unsupervised techniques, provide information on how the clustering algorithm will be tested and how the model comparison will be implemented. Details for a cross-validation strategy or other out-of-sample evaluation should be included.
+\section{Milestones and Plan}
+
+Sketch out what you think will be the major intermediate milestones you need to achieve. Give a general idea of your planning.
+
+\printbibliography
+\end{document}
