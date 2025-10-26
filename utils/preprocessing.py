@@ -39,15 +39,14 @@ def read_indresp_selected(cfg=None, root: Path | None=None) -> pd.DataFrame:
     dta_path = abspath(root, cfg["ukhls"]["indresp_dta"])
 
     # 先读取列名
-    _, meta = pyreadstat.read_dta(dta_path, row_limit=1)
+    _, meta = pyreadstat.read_dta(dta_path, row_limit=1, apply_value_formats=False)
     available = set(meta.column_names)
 
     keep_cols = load_candidate_vars(cfg, root)
     usecols = _resolve_keep_cols(keep_cols, available)
 
     # 再读取数据（只读需要的列）
-    df, _ = pyreadstat.read_dta(dta_path, usecols=usecols, apply_value_formats=False,
-                                formats_as_category=False)
+    df, _ = pyreadstat.read_dta(dta_path, usecols=usecols, apply_value_formats=False, formats_as_category=False)
     return df
 
 def normalize_missing(df: pd.DataFrame, neg_codes: list[int]) -> pd.DataFrame:
