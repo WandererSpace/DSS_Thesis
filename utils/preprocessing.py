@@ -70,12 +70,6 @@ def normalize_missing(df: pd.DataFrame, neg_codes: list[int]) -> pd.DataFrame:
             df[c] = df[c].where(~df[c].isin(NEG), np.nan)
     return df
 
-def filter_self_completion(df: pd.DataFrame, flag_col: str) -> pd.DataFrame:
-    # 只保留完成自填问卷的成人样本（确保 GHQ/SF12 可用）
-    if flag_col in df.columns:
-        return df[df[flag_col] == 1].copy()
-    return df
-
 def engineer_employment_history_features(df: pd.DataFrame) -> pd.DataFrame:
     import numpy as np
     import re
@@ -147,7 +141,6 @@ def run_basic_processing_and_save(cfg=None, root: Path | None=None):
     df = read_indresp_selected(cfg, root)
     df = normalize_missing(df, proc["negative_missing_codes"])
     # ⬇️ 添加调试行
-    print("After filtering self-completion:", df.shape)
     print("target_cls existence:", "target_cls" in df.columns)
 
     df = engineer_employment_history_features(df)
